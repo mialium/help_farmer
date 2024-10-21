@@ -1,0 +1,31 @@
+.container {
+  height: 30vh; /* 绿色模块的高度 */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直排列 */
+  margin: 0; /* 去掉默认的margin */
+  padding: 0; /* 去掉默认的padding */
+  background-color: rgb(102,178,162);
+}
+
+.search-container {
+  padding: 10px; /* 内边距 */
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px; /* 内边距 */
+  border-radius: 20px; /* 圆角 */
+  border: none; /* 无边框 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+swiper {
+  width: 100%;
+  height: 300px;
+}
+
+swiper image {
+  width: 100%;
+  height: 100%;
+}
