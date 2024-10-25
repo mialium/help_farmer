@@ -1,94 +1,52 @@
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0';
-
 Page({
-  data: {
-    motto: '欢迎您来到助农小站',
-    userInfo: {
-      avatarUrl: defaultAvatarUrl,
-      nickName: '',
+    data: {
+        indicatorDots: true, // 是否显示面板指示点
+        autoplay: true, // 是否自动切换
+        interval: 5000, // 自动切换时间间隔
+        duration: 500, // 滑动动画时长
+        searchKeyword: '', // 用于存储搜索框输入的内容
+        swiperItems: [
+            "http://localhost:3000/images/swiper-1.jpg",
+            "http://localhost:3000/images/swiper-2.jpg",
+            "http://localhost:3000/images/swiper-3.jpg",
+            "http://localhost:3000/images/swiper-4.jpg",
+            "http://localhost:3000/images/swiper-5.jpg",
+            "http://localhost:3000/images/swiper-6.jpg",
+        ],
+        produces: [] // 存储农产品的数组
     },
-    hasUserInfo: false,
-    canIUseGetUserProfile: wx.canIUse('getUserProfile'),
-    canIUseNicknameComp: wx.canIUse('input.type.nickname'),
-    errorMsg: '',  // 用于存储错误信息
-  },
-  
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    });
-  },
-
-  onChooseAvatar(e) {
-    const { avatarUrl } = e.detail;
-    const { nickName } = this.data.userInfo;
-    this.setData({
-      "userInfo.avatarUrl": avatarUrl,
-      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-    });
-  },
-
-  onInputChange(e) {
-    const nickName = e.detail.value;
-    const { avatarUrl } = this.data.userInfo;
-    this.setData({
-      "userInfo.nickName": nickName,
-    
-    });
-  },
-
-  getUserProfile(e) {
-    wx.getUserProfile({
-      desc: '展示用户信息',
-      success: (res) => {
-        console.log(res);
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-          errorMsg: ''
+    onProduceCategoryTap: function (event) {
+        const id = event.currentTarget.dataset.id
+        getApp().globalData.selectedCategoryId = id
+        wx.switchTab({
+            url: '/pages/produceCategory/produceCategory',
+        })
+    },
+    onLoad() {
+        wx.request({
+            url: 'http://localhost:3000/api/produces?isHot=1', // 替换为您实际的接口
+            method: 'GET',
+            success: (res) => {
+                if (res.statusCode === 200) {
+                    console.log(res.data)
+                    this.setData({
+                        produces: res.data // 假设返回的数据是图片URL的数组
+                    });
+                }
+            }
         });
-        this.sendUserInfo(res.userInfo);
-      }
-    });
-  },
-  submitUserInfo() {
-    const { avatarUrl, nickName } = this.data.userInfo;
-  
-    // 检查信息是否完整
-    if (!avatarUrl || !nickName) {
-      this.setData({ errorMsg: '请确保头像和昵称都已填写。' });
-      return;
-    }
-  
-    // 如果信息完整，可以调用发送用户信息的函数
-    this.sendUserInfo(this.data.userInfo);
-  },
-  
-  sendUserInfo(userInfo) {
-    // 这里加入发送用户信息到后端的逻辑
-    wx.request({
-      url: '  http://localhost:3000/api/users', 
-      method: 'POST',
-      data: {
-        avatarUrl: userInfo.avatarUrl,
-        nickName: userInfo.nickName
-      },
-      success: (response) => {
-        console.log("用户信息发送成功:", response.data);
-        this.setData({ errorMsg: '' }); // 清空错误信息
-        wx.redirectTo({ url: '/pages/home/home'});
-      },
-      fail: (error) => {
-        console.error("用户信息发送失败:", error);
-        this.setData({ errorMsg: '用户信息发送失败，请稍后再试。' });
-      }
-    });
-  },
+    },
 
-  onLoad() {
-    // 页面加载时获取用户信息
-    if (this.data.canIUseGetUserProfile) {
-      this.getUserProfile();
+    // 输入框的变化处理函数
+    onSearchChange(event) {
+        this.setData({
+            searchKeyword: event.detail.value // 更新搜索关键词
+        });
+    },
+    onSearch(event) {
+        wx.navigateTo({
+            url: `/pages/produceList/produceList?keyword=${event.detail.value}`,
+        })
     }
-  }
+
 });

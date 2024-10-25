@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "农产品列表",
+    "usingComponents": {
+        "floating-cart": "/components/floating-cart/floating-cart"
+    }
+}

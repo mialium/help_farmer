@@ -1,0 +1,14 @@
+<!-- components/contact-us-modal/contact-us-modal.wxml -->
+<view class="modal" wx:if="{{visible}}">
+    <view class="modal-content">
+        <view class="modal-header">
+            <text class="modal-title">联系客服</text>
+        </view>
+        <view class="modal-body">
+            <image class="qr-code" src="/images/客服.jpg" mode="widthFix"></image>
+        </view>
+        <view class="modal-footer">
+            <button class="modal-close-btn" bindtap="closeModal">关闭</button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,10 @@
+<view class="popup-mask" wx:if="{{visible}}">
+    <view class="popup-content">
+        <view>
+            助农小站：连接你我，助力乡村振兴
+            助农小站是一个公益性助农电商平台，致力于为优质农产品搭建桥梁，让农民的辛勤汗水转化为实实在在的收入，也让消费者品尝到新鲜、健康、实惠的农产品。
+            我们相信，科技可以改变生活，更可以改变乡村。
+        </view>
+        <button class="popup-close" bindtap="closePopup">关闭</button>
+    </view>
+</view>

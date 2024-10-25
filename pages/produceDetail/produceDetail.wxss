@@ -1,0 +1,38 @@
+/* pages/productDetail/productDetail.wxss */
+.container {
+  padding: 20rpx;
+}
+
+.product-image {
+  width: 100%;
+  height: 400rpx;
+  margin-bottom: 20rpx;
+}
+
+.product-info {
+  padding: 20rpx;
+}
+
+.product-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.product-price {
+  color: #f00;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.product-description {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.add-to-cart {
+  background-color: #f00;
+  color: #fff;
+  border-radius: 5rpx;
+}

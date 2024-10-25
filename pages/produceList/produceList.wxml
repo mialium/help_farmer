@@ -1,0 +1,27 @@
+<floating-cart></floating-cart>
+<view class="container">
+    <view class="product-list">
+        <block wx:for="{{products}}" wx:for-item="product" wx:for-index="index" wx:key="index">
+            <view class="product-row" wx:if="{{index % 2 === 0}}">
+                <view class="product-item">
+                    <image class="product-image" src="{{product.image}}" mode="aspectFill">
+                    </image>
+                    <view class="product-info">
+                        <view class="product-name">{{product.name}}</view>
+                        <view class="product-price">￥ {{product.price}}</view>
+                    </view>
+                    <button type="primary" data-id="{{product.id}}" data-name="{{product.name}}" data-price="{{product.price}}" bind:tap="onCartBtnTap">加入购物车</button>
+                </view>
+                <view class="product-item" wx:if="{{index + 1 < products.length}}">
+                    <image class="product-image" src="{{products[index + 1].image}}" mode="aspectFill"></image>
+                    <view class="product-info">
+                        <view class="product-name">{{products[index + 1].name}}
+                        </view>
+                        <view class="product-price">￥{{products[index + 1].price}}</view>
+                    </view>
+                    <button type="primary" data-id="{{product.id}}" data-name="{{product.name}}" data-price="{{product.price}}" bind:tap="onCartBtnTap">加入购物车</button>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

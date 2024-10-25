@@ -1,4 +1,9 @@
 {
+  "navigationBarTitleText": "热销农产品",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff",
+  "enablePullDownRefresh": true,
   "usingComponents": {
+    "floating-cart": "/components/floating-cart/floating-cart"
   }
 }

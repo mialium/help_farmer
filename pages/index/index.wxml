@@ -1,34 +1,51 @@
-<!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y>
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input
-            type="text"
-            class="nickname-input"
-            placeholder="请输入昵称"
-            bindinput="onInputChange"
-          />
+<!-- home.wxml -->
+<floating-cart></floating-cart>
+
+<view class="container">
+    <!-- 头部区域 -->
+    <view class="header">
+        <view class="search-box">
+            <input type="text" placeholder="搜索" value="{{searchKeyword}}" bindinput="onSearchChange" bindconfirm="onSearch" />
         </view>
-        <button class="submit-btn" bindtap="submitUserInfo">登录</button>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">获取头像昵称</button>
-        <view wx:else>请使用2.10.4及以上版本基础库</view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
     </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
+
+    <!-- 轮播图区域 -->
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <swiper-item wx:for="{{swiperItems}}" wx:key="item">
+            <image src="{{item}}" mode="aspectFill"></image>
+            <view class="swiper-text">
+            </view>
+        </swiper-item>
+    </swiper>
+
+    <!-- 分类区域 -->
+    <view class="categories">
+        <view class="category-item" data-id="1" bind:tap="onProduceCategoryTap">
+            <image src="/images/fruit.png"></image>
+            <text>水果</text>
+        </view>
+        <view class="category-item" data-id="2" bind:tap="onProduceCategoryTap">
+            <image src="/images/Vegetable.png"></image>
+            <text>蔬菜</text>
+        </view>
+        <view class="category-item" data-id="3" bind:tap="onProduceCategoryTap">
+            <image src="/images/粮食.png"></image>
+            <text>粮食</text>
+        </view>
+        <view class="category-item" data-id="4" bind:tap="onProduceCategoryTap">
+            <image src="/images/Meat.png"></image>
+            <text>肉类</text>
+        </view>
     </view>
-    <text class="error-message" wx:if="{{errorMsg}}">{{errorMsg}}</text>
-  </view>
-</scroll-view>
+
+    <!-- 热销商品区域 -->
+    <view class="hot-products">
+        <view wx:for="{{produces}}" wx:key="id" class="product-item">
+            <image src="{{item.image}}" mode="aspectFill"></image>
+            <view class="product-info">
+                <text>{{item.name}}:￥{{item.price}} 500g</text>
+            </view>
+        </view>
+    </view>
+
+</view>

@@ -1,0 +1,32 @@
+<!-- pages/productDetail/productDetail.wxml -->
+<view class="container">
+  <!-- 商品图片和视频 -->
+  <swiper class="product-swiper" indicator-dots autoplay>
+    <swiper-item>
+      <image class="product-image" src="{{product.image}}"></image>
+    </swiper-item>
+    <swiper-item>
+      <video class="product-video" src="{{product.video}}" controls></video>
+    </swiper-item>
+  </swiper>
+
+  <!-- 商品信息 -->
+  <view class="product-info">
+    <text class="product-name">{{product.name}}</text>
+    <text class="product-price">¥{{product.price}}</text>
+    <text class="product-description">{{product.description}}</text>
+  </view>
+
+  <!-- 农民伯伯介绍 -->
+  <view class="farmer-info">
+    <text class="farmer-title">农民伯伯介绍</text>
+    <view class="farmer-content">
+      <image class="farmer-image" src="{{farmer.image}}"></image>
+      <text class="farmer-description">{{farmer.description}}</text>
+    </view>
+    <video class="farmer-video" src="{{farmer.video}}" controls></video>
+  </view>
+
+  <!-- 加入购物车按钮 -->
+  <button class="add-to-cart" bindtap="onAddToCart">加入购物车</button>
+</view>

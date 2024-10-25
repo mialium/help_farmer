@@ -1,0 +1,26 @@
+<view class="floating-cart">
+    <view class="cart-icon" bindtap="toggleCart">
+        <image src="/images/icon_cart.png"></image>
+        <view class="cart-count">{{shoppingCartItems.length}}</view>
+    </view>
+
+    <!-- 购物车弹窗 -->
+    <view class="cart-popup" wx:if="{{isCartOpen}}">
+        <view class="cart-header">
+            <text>购物车</text>
+            <text class="close-btn" bindtap="closeCart">关闭</text>
+        </view>
+        <scroll-view scroll-y class="cart-items">
+            <view wx:for="{{shoppingCartItems}}" wx:key="id" class="cart-item">
+                <text>{{item.name}}</text>
+                <text>数量: {{item.quantity}}</text>
+
+                <text>价格: {{item.price}}</text>
+
+            </view>
+        </scroll-view>
+        <view class="cart-footer">
+            <button bindtap="checkout">结算</button>
+        </view>
+    </view>
+</view>

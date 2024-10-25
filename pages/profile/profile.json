@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "我的",
+    "usingComponents": {
+        "about-us-modal": "/components/about-us-modal/about-us-modal",
+        "contact-us-modal": "/components/contact-us-modal/contact-us-modal"
+    }
+}

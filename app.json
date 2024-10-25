@@ -1,16 +1,52 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/home/home",
-    "pages/logs/logs"
-  ],
-  "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "助农小站",
-    "navigationBarBackgroundColor": "#ffffff"
-  },
-  "style": "v2",
-  "componentFramework": "glass-easel",
-  "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+    "pages": [
+        "pages/index/index",
+        "pages/login/login",
+        "pages/produceCategory/produceCategory",
+        "pages/produceList/produceList",
+        "pages/produceDetail/produceDetail",
+        "pages/shoppingCart/shoppingCart",
+        "pages/profile/profile"
+    ],
+    "window": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "助农小站",
+        "navigationBarBackgroundColor": "#ffffff"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "热销",
+                "iconPath": "images/tabbar_icon_hot.png",
+                "selectedIconPath": "images/tabbar_icon_hot.png"
+            },
+            {
+                "pagePath": "pages/produceCategory/produceCategory",
+                "text": "分类",
+                "iconPath": "images/banana.png",
+                "selectedIconPath": "images/banana.png"
+            },
+            {
+                "pagePath": "pages/shoppingCart/shoppingCart",
+                "text": "购物车",
+                "iconPath": "images/icon_cart.png",
+                "selectedIconPath": "images/icon_cart.png"
+            },
+            {
+                "pagePath": "pages/profile/profile",
+                "text": "我的",
+                "iconPath": "images/tabbar_icon_profile.png",
+                "selectedIconPath": "images/tabbar_icon_profile.png"
+            }
+        ],
+        "color": "#000000",
+        "selectedColor": "#1296db",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black"
+    },
+    "style": "v2",
+    "componentFramework": "glass-easel",
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents"
 }

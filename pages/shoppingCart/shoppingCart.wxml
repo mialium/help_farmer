@@ -1,0 +1,17 @@
+<view class="cart-page">
+  <scroll-view scroll-y class="cart-items">
+    <view wx:for="{{cartItems}}" wx:key="id" class="cart-item">
+      <text>{{item.name}}</text>
+      <text>数量: {{item.quantity}}</text>
+      <button bindtap="removeFromCart" data-id="{{item.id}}">移除</button>
+    </view>
+  </scroll-view>
+  <view class="cart-footer">
+    <button bindtap="checkout">结算</button>
+  </view>
+
+
+  
+   
+    
+</view>

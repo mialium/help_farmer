@@ -1,0 +1,42 @@
+<!-- profile.wxml -->
+<view class="container">
+    <!-- 头部布局 -->
+    <view class="header">
+        <text wx:if="{{hasUserInfo}}" class="title">您好，七号星球</text>
+
+    </view>
+
+    <!-- 功能模块布局 -->
+    <view class="function-modules">
+        <view class="module-item" bindtap="navigateToOrders">
+            <image src="/images/订单.png" class="module-icon"></image>
+            <text>我的订单</text>
+        </view>
+        <view class="module-item" bindtap="navigateToFavorites">
+            <image src="/images/收藏.png" class="module-icon"></image>
+            <text>我的收藏</text>
+        </view>
+        <view class="module-item" bindtap="navigateToAddresses">
+            <image src="/images/地址.png" class="module-icon"></image>
+            <text>收货地址</text>
+        </view>
+    </view>
+
+    <!-- 辅助功能布局 -->
+    <view class="auxiliary-modules">
+        <button class="auxiliary-button" bindtap="navigateToSettings">设置</button>
+        <button bindtap="showContactUsModal">联系客服</button>
+  <contact-us-modal visible="{{showContactUsModal}}" qrCodeUrl="{{qrCodeUrl}}"></contact-us-modal>
+
+        <!-- 按钮 -->
+        <button bindtap="showAboutUsModal">关于我们</button>
+        <about-us-modal visible="{{showAboutUsModal}}"></about-us-modal>
+
+        <custom-modal visible="{{PopupVisible1}}" inputValue="{{inputValue1}}" bind:input="handleInput1" bind:close="closePopup">
+        </custom-modal>
+
+        <custom-modal visible="{{PopupVisible2}}" inputValue="{{inputValue2}}" bind:input="handleInput2" bind:close="closePopup2">
+        </custom-modal>
+
+    </view>
+</view>
